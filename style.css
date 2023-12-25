@@ -29,6 +29,7 @@ video{
     display: flex; 
     flex-direction: column;
     justify-content: space-between;
+    z-index: 2;
 }
 
 .action-cont > * {
@@ -87,7 +88,7 @@ video{
 
 .timer-cont{
     position: absolute;
-    bottom: 17rem;
+    bottom: 8rem;
     left: 5rem;
     color: aliceblue;
     font-size: 1.5rem;
@@ -95,4 +96,50 @@ video{
 
 .timer {
     display: none;
+}
+
+.filter-cont {
+    position: absolute;
+    top: calc((100vh - 16rem)/2);
+    left: 5rem;
+    height: 16rem;
+    width: 5rem;
+    background-color: lightblue;
+    z-index: 2;
+}
+
+.filter{
+    height: 4rem;
+    background-image: url("https://picsum.photos/seed/picsum/200/300");
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-blend-mode: color-burn;
+}
+
+.orange{
+    /* //select color with transparency use inspect so that direct hexvalue  */
+    background-color: #ffa60036;
+}
+
+.pink{
+    background-color: #ffc0cb31;
+}
+
+.brown {
+    background-color: #a52a2a3c;
+}
+
+.transparent{
+    background-color: transparent;
+}
+
+.filter-layer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    /* so that this layer is behindthe buttons to keep them functional  */
+    z-index: 1;
 }

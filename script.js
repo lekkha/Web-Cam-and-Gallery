@@ -6,6 +6,7 @@ let recordBtn = document.querySelector(".record-btn");
 let captureBtnCont = document.querySelector(".capture-btn-cont");
 let captureBtn = document.querySelector(".capture-btn");
 let recordFlag = false;
+let transparentColor = "transparent";
 
 
 let recorder;
@@ -62,6 +63,28 @@ recordBtnCont.addEventListener("click", (e) => {
     }
 })
 
+//capturing image using canvas api
+captureBtn.addEventListener("click", (e) => {
+    let canvas = document.createElement("canvas"); 
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight; 
+
+    let tool = canvas.getContext("2d"); 
+    //video,x,y,width,height
+    tool.drawImage(video,0,0,canvas.width, canvas.height);            
+    
+    // filering 
+    tool.fillStyle = transparentColor; 
+    tool.fillRect(0,0,canvas.width,canvas.height);
+
+    //downloading procedure
+    let imageURL = canvas.toDataURL(); 
+    let a = document.createElement("a"); 
+    a.href = imageURL; 
+    a.download = "image.jpg"; 
+    a.click(); 
+})
+
 let timerID; 
 let counter =0; //represents total second 
 let timer = document.querySelector(".timer"); 
@@ -95,3 +118,20 @@ function stopTimer(){
     timer.style.display = "none"; 
     timer.innerText = "00:00:00";
 }
+
+//filtering logic 
+
+let filterLayer = document.querySelector(".filter-layer");  
+let allFilters = document.querySelectorAll(".filter"); 
+
+allFilters.forEach((filterElem) => {
+    //add a click listener to all filter button 
+    filterElem.addEventListener("click", (e) => {
+        //get the style of the emelent in transparentColor - so that canvas can get the color
+        transparentColor = getComputedStyle(filterElem).getPropertyValue("background-color");
+        //set the filter-layer color to be the background color so that the user an see the screen
+        filterLayer.style.backgroundColor = transparentColor;
+
+    })
+
+})
