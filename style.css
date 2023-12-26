@@ -143,3 +143,17 @@ video{
     /* so that this layer is behindthe buttons to keep them functional  */
     z-index: 1;
 }
+
+.material-icons {
+    color: white;
+    font-size: 3rem;
+}
+.gallery {
+    position: absolute;
+    right: 6rem;
+    bottom: 3rem;
+    z-index: 2;
+}
+.gallery:hover {
+    cursor: pointer;
+}

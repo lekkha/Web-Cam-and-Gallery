@@ -38,8 +38,19 @@
 
     <div class="filter-layer"></div>
 
+    <span class="material-icons gallery">
+        collections
+    </span>
+
+    <script src="https://unpkg.com/shortid-dist@1.0.5/dist/shortid-2.2.13.js"></script>
+    <script src="./db.js"></script>
     <script src="./script.js"></script>
-    
+    <script>
+        let gallery = document.querySelector(".gallery"); 
+        gallery.addEventListener("click", (e) => {
+            location.assign("./gallery.html");
+        })
+    </script> 
 </body>
 
 </html>
